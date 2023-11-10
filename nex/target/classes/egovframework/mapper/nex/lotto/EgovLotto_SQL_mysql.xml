@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LottoDAO">
+
+	<resultMap id="lottoMap" type="egovframework.nex.lotto.service.LottoVO">
+		<result property="id" column="ID"/>
+		<result property="num" column="NUM"/>
+	</resultMap>
+
+ 	<select id="select" parameterType="lottoVO" resultMap="lottoMap">
+		SELECT *
+		FROM LOTTO
+		WHERE ID = '1'
+ 	</select>
+
+	<update id="update" parameterType="lottoVO">
+		UPDATE LOTTO
+		SET NUM =  #{num}
+		WHERE ID ='1'
+	</update>
+</mapper>

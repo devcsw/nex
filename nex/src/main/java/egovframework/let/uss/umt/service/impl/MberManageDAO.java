@@ -64,6 +64,14 @@ public class MberManageDAO extends EgovAbstractMapper{
     public int insertMber(MberManageVO mberManageVO){
         return insert("mberManageDAO.insertMber_S", mberManageVO);
     }
+    /**
+     * 일반회원의 기본정보를 화면에서 입력하여 항목의 정합성을 체크하고 데이터베이스에 저장
+     * @param mberManageVO 일반회원 등록정보
+     * @return String 등록결과
+     */
+    public int insertLet(MberManageVO mberManageVO){
+    	return insert("mberManageDAO.insertLet", mberManageVO);
+    }
 
     /**
      * 기 등록된 사용자 중 검색조건에 맞는일반회원의 정보를 데이터베이스에서 읽어와 화면에 출력

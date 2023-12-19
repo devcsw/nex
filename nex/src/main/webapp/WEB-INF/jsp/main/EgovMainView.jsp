@@ -46,7 +46,8 @@
                     <p>
                         <span class="t1">넥스 홈페이지</span>
                         <span class="t2">NEX 포털</span>
-                        <span class="t3">그냥 만들었음</span>
+                        <span class="t3">하이오맨 퇴근시간<span id="hioman"></span></span>
+                        <span class="t2">캡틴 합격 기원</span>
                     </p>
                 </div>
 
@@ -54,7 +55,7 @@
                 <div class="dash_board">
                     <div class="inner">
                         <ul class="tab">
-                            <li><a href="" class="cur">공지사항</a></li>
+                            <li><a href="" class="cur">캡틴의 라스트 댄스</a></li>
                             <li><a href="">자유게시판</a></li>
                             <!-- <li><a href="">묻고 답하기</a></li> -->
                         </ul>
@@ -63,44 +64,22 @@
 
                         	<!-- 공지사항 -->
                             <div class="tab_item">
-                                <h2 class="blind">공지사항</h2>
+                                <h2 class="blind">캡틴의 라스트 댄스</h2>
                                 <ul>
-
-                                	<c:if test="${fn:length(notiList) == 0}" >
-				                        <li>최신 게시물이 없습니다.</li>
-				                    </c:if>
-
-                                	<c:forEach var="result" items="${notiList}" begin="0" end="2" step="1" varStatus="status">
                                     <li>
-                                        <a href="<c:url value='/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_AAAAAAAAAAAA'/>">
-                                        	<c:if test="${!(result.isExpired=='Y' || result.useAt == 'N')}">
-	                                            <span class="tit">
-	                                            	<c:choose>
-	                                            		<c:when test="${fn:length(result.nttSj) > 51 }">
-	                                            			<c:out value="${fn:substring(result.nttSj, 0, 50)}" />...
-	                                            		</c:when>
-	                                            		<c:otherwise>
-	                                            			<c:out value="${result.nttSj }"></c:out>
-	                                            		</c:otherwise>
-	                                            	</c:choose>
-	                                            </span>
-	                                            <span class="desc">
-	                                            	<c:choose>
-	                                            		<c:when test="${fn:length(result.nttCn) > 151 }">
-	                                            			<c:out value="${fn:substring(result.nttCn, 0, 150)}" />...
-	                                            		</c:when>
-	                                            		<c:otherwise>
-	                                            			<c:out value="${result.nttCn }"></c:out>
-	                                            		</c:otherwise>
-	                                            	</c:choose>
-	                                            </span>
-	                                            <span class="dates">
-	                                            	<c:out value="${result.frstRegisterPnttm}"/>
-	                                            </span>
-                                            </c:if>
+                                        <a href="<c:url value='https://www.op.gg/summoners/kr/NEX%20Captain-KR1'/>">
+                                        	<span class="tit">
+												캡틴 중계점 - opgg
+                                       		</span>
                                         </a>
                                     </li>
-                                    </c:forEach>
+                                    <li>
+                                        <a href="<c:url value='https://your.gg/ko/kr/profile/NEX%20captain'/>">
+                                        	<span class="tit">
+												캡틴 중계점 - your.gg
+                                       		</span>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <a href="<c:url value='/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_AAAAAAAAAAAA'/>" class="more">더보기</a>
                             </div>
@@ -150,102 +129,60 @@
                                 <a href="<c:url value='/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_BBBBBBBBBBBB'/>" class="more">더보기</a>
                             </div>
 
-
-
                             <!-- 묻고답하기 -->
-                            <div class="tab_item">
-                                <h2 class="blind">묻고답하기</h2>
-                                <ul>
-                                    <li>
-                                        <a href="<c:url value='/uss/olh/qna/QnaListInqire.do'/>">
-                                            <span class="tit">전자정부 표준프레임워크 경량환경 포털 묻고답하기입니다.</span>
-                                            <span class="desc">안녕하세요. 전자정부 표준프레임워크 센터입니다.
-                                                현재 전자정부 표준프레임워크 경량환경 포털 공지
-                                                사항입니다. 안녕하세요. 전자정부 표준프레임워크
-                                                센터입니다. 현재 전자정부 표준프레임워크...</span>
-                                            <span class="dates">2021-06-30</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="tit">전자정부 표준프레임워크 경량환경 포털 묻고답하기입니다.</span>
-                                            <span class="desc">안녕하세요. 전자정부 표준프레임워크 센터입니다.
-                                                현재 전자정부 표준프레임워크 경량환경 포털 공지
-                                                사항입니다. 안녕하세요. 전자정부 표준프레임워크
-                                                센터입니다. 현재 전자정부 표준프레임워크...</span>
-                                            <span class="dates">2021-06-30</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="tit">전자정부 표준프레임워크 경량환경 포털 묻고답하기입니다.</span>
-                                            <span class="desc">안녕하세요. 전자정부 표준프레임워크 센터입니다.
-                                                현재 전자정부 표준프레임워크 경량환경 포털 공지
-                                                사항입니다. 안녕하세요. 전자정부 표준프레임워크
-                                                센터입니다. 현재 전자정부 표준프레임워크...</span>
-                                            <span class="dates">2021-06-30</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <a href="<c:url value='/uss/olh/qna/QnaListInqire.do'/>" class="more">더보기</a>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!--// 게시물 -->
 
-                <div class="g_area">
-                    <div class="inner">
-                        <div class="left_col">
-                            <!-- FAQ -->
-                            <div class="faq">
-                                <div class="head">
-                                    <h2>자주하는 질문<span>FAQ</span></h2>
-                                    <p>표준프레임워크 경량화 서비스에 대한 자주하는 질문의 답변들을 볼 수 있습니다.</p>
-                                </div>
-
-                                <c:forEach var="result" items="${faqList}" varStatus="status">
-                                <dl>
-                                    <dt><span class="q">Q</span><a href="<c:url value='/uss/olh/faq/FaqListInqire.do' />"><c:out value="${result.qestnSj}"/></a></dt>
-                                    <dd><span class="a">A</span><c:out value="${fn:substring(fn:escapeXml(result.answerCn), 0, 70)}" /></dd>
-                                </dl>
-                                </c:forEach>
-
-                                <a href="<c:url value='/uss/olh/faq/FaqListInqire.do' />" class="more">더보기</a>
-                            </div>
-
-                            <!-- 홍보물 -->
-                            <div class="promotion">
-                                <h2>홍보물</h2>
-                                <p><strong>발간자료 / 뉴스기사</strong> 등의 홍보자료를 제공하고 있습니다.</p>
-                                <a href="#LINK" class="more">더보기</a>
-                            </div>
-                        </div>
-                        <div class="right_col">
-                            <!-- 한방에 신청하는 민원 -->
-                            <div class="complaint">
-                                <h2>한방에 신청하는 <span>민원</span></h2>
-                                <ul>
-                                    <li><a href="#LINK" class="tech" onclick="javascript:goMenuPage('2000000'); return false;">기술지원 필요시<br>유지보수 민원</a></li>
-                                    <li><a href="#LINK" class="buy" onclick="javascript:goMenuPage('2000000'); return false;">구매 제품<br>A/S 민원</a></li>
-                                </ul>
-                                <a href="#LINK" class="more" onclick="javascript:goMenuPage('2000000'); return false;">더보기</a>
-                            </div>
-
-                            <!-- 포털 설문 참여 -->
-                            <div class="survey">
-                                <h2>포털 설문 <span>참여</span></h2>
-                                <p>표준프레임워크 경량환경 포털 홈페이지<br>
-                                    이용에 대해서 사용자 여러분들께<br>
-                                    설문조사를 진행합니다.</p>
-                                <a href="<c:url value='/uss/olp/qnn/EgovQustnrRespondInfoManageList.do'/>">참여하기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
+<script>
+    // 저녁 8시까지의 시간을 설정 (24시간 형식)
+    const targetHour = 20;
+
+    // 업데이트 간격 (밀리초 단위)
+    const updateInterval = 1000;
+
+    function updateRemainingTime() {
+        // 현재 시간 얻기
+        const now = new Date();
+
+        // 목표 시간 설정
+        const targetTime = new Date(now);
+        targetTime.setHours(targetHour, 0, 0, 0);
+
+        // 남은 시간 계산
+        let timeDiff = targetTime - now;
+        if (timeDiff < 0) {
+            // 저녁 8시가 이미 지났으면 다음 날로 설정
+            targetTime.setDate(targetTime.getDate() + 1);
+            timeDiff = targetTime - now;
+        }
+
+        // 시, 분, 초 계산
+        const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        timeDiff -= hours * 1000 * 60 * 60;
+        const minutes = Math.floor(timeDiff / (1000 * 60));
+        timeDiff -= minutes * 1000 * 60;
+        const seconds = Math.floor(timeDiff / 1000);
+
+        // 남은 시간을 표시할 요소 찾기
+        const hiomanElement = document.getElementById("hioman");
+
+        // 남은 시간 업데이트
+        namuntime = '남은시간:' + hours + '시간 ' +minutes + '분 ' + seconds + '초';
+
+        hiomanElement.innerHTML = namuntime;
+
+        // 일정 간격으로 업데이트
+        setTimeout(updateRemainingTime, updateInterval);
+    }
+
+    // 페이지 로드 시 남은 시간 업데이트 시작
+    updateRemainingTime();
+</script>
         <!-- footer 시작 -->
 	    <c:import url="/sym/mms/EgovFooter.do" />
 	    <!-- //footer 끝 -->

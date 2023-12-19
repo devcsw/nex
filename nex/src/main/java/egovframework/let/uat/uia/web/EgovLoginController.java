@@ -2,19 +2,14 @@ package egovframework.let.uat.uia.web;
 
 import java.util.Map;
 
-import egovframework.com.cmm.EgovMessageSource;
-import egovframework.com.cmm.LoginVO;
-import egovframework.let.uat.uia.service.EgovLoginService;
-
-import org.egovframe.rte.fdl.cmmn.trace.LeaveaTrace;
-import org.egovframe.rte.fdl.property.EgovPropertyService;
-import org.egovframe.rte.fdl.security.userdetails.util.EgovUserDetailsHelper;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
+import org.egovframe.rte.fdl.cmmn.trace.LeaveaTrace;
+import org.egovframe.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.fdl.security.userdetails.util.EgovUserDetailsHelper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -23,6 +18,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import egovframework.com.cmm.EgovMessageSource;
+import egovframework.com.cmm.LoginVO;
+import egovframework.let.uat.uia.service.EgovLoginService;
 /**
  * 일반 로그인을 처리하는 컨트롤러 클래스
  * @author 공통서비스 개발팀 박지욱
@@ -100,29 +99,29 @@ public class EgovLoginController {
         	UsernamePasswordAuthenticationFilter springSecurity = null;
 
         	ApplicationContext act = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
-        	
-        	
+
+
         	Map<String, UsernamePasswordAuthenticationFilter> beans = act.getBeansOfType(UsernamePasswordAuthenticationFilter.class);
-			
+
 			if (beans.size() > 0) {
-				
+
 				springSecurity = (UsernamePasswordAuthenticationFilter) beans.values().toArray()[0];
 				springSecurity.setUsernameParameter("egov_security_username");
 				springSecurity.setPasswordParameter("egov_security_password");
 				springSecurity.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(request.getServletContext().getContextPath() +"/egov_security_login", "POST"));
-				
+
 			} else {
 				throw new IllegalStateException("No AuthenticationProcessingFilter");
 			}
 
         	springSecurity.setContinueChainBeforeSuccessfulAuthentication(false);	// false 이면 chain 처리 되지 않음.. (filter가 아닌 경우 false로...)
-        	
+
         	springSecurity.doFilter(new RequestWrapperForSecurity(request, resultVO.getUserSe() + resultVO.getId() , resultVO.getUniqId()), response, null);
-        	
+        	loginService.insertLoginLog(resultVO);
         	return "forward:/cmm/main/mainPage.do";	// 성공 시 페이지.. (redirect 불가)
 
         } else {
-        	
+
         	model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
         	return "uat/uia/EgovLoginUsr";
         }
@@ -137,14 +136,14 @@ public class EgovLoginController {
     @RequestMapping(value="/uat/uia/actionMain.do")
 	public String actionMain(ModelMap model)
 			throws Exception {
-    	
+
     	// 1. Spring Security 사용자권한 처리
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
         	return "uat/uia/EgovLoginUsr";
     	}
-    	
+
 		// 2. 메인 페이지 이동
     	return "forward:/cmm/main/mainPage.do";
 
@@ -158,7 +157,7 @@ public class EgovLoginController {
     @RequestMapping(value="/uat/uia/actionLogout.do")
 	public String actionLogout(HttpServletRequest request, ModelMap model) throws Exception {
     	request.getSession().setAttribute("LoginVO", null);
-    	
+
     	return "redirect:/egov_security_logout";
     }
 }
@@ -173,14 +172,14 @@ class RequestWrapperForSecurity extends HttpServletRequestWrapper {
 		this.username = username;
 		this.password = password;
 	}
-	
+
 	@Override
-	public String getServletPath() {		
+	public String getServletPath() {
 		return ((HttpServletRequest) super.getRequest()).getContextPath() + "/egov_security_login";
 	}
 
 	@Override
-	public String getRequestURI() {		
+	public String getRequestURI() {
 		return ((HttpServletRequest) super.getRequest()).getContextPath() + "/egov_security_login";
 	}
 

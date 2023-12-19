@@ -1,9 +1,8 @@
 package egovframework.let.uat.uia.service.impl;
-import egovframework.com.cmm.LoginVO;
-
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
-
 import org.springframework.stereotype.Repository;
+
+import egovframework.com.cmm.LoginVO;
 /**
  * 일반 로그인을 처리하는 DAO 클래스
  * @author 공통서비스 개발팀 박지욱
@@ -63,5 +62,14 @@ public class LoginDAO extends EgovAbstractMapper {
 	 */
     public void updatePassword(LoginVO vo) throws Exception {
     	update("loginDAO.updatePassword", vo);
+    }
+
+    /**
+     * 로그인 로그.
+     * @param vo LoginVO
+     * @exception Exception
+     */
+    public void insertLoginLog(LoginVO vo) throws Exception {
+    	update("loginDAO.insertLoginLog", vo);
     }
 }

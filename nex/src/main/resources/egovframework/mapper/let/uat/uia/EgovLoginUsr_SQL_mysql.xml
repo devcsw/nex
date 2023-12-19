@@ -47,6 +47,14 @@
         <!-- </if>-->
 	</select>
 
+	<insert id="insertLoginLog" parameterType="LoginVO">
+			INSERT INTO LOGIN_LOG
+				  ( LOGIN_ID
+				  , LOGIN_DATE )
+		    VALUES ( #{id}
+				  , now())
+	</insert>
+
 	<!-- 인증서 로그인
 	<select id="actionCrtfctLogin" resultMap="login">
 		<![CDATA[

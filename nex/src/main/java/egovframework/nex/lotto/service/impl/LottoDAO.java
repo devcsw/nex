@@ -24,4 +24,12 @@ public class LottoDAO extends EgovAbstractMapper {
     public int update(LottoVO lottoVO) throws Exception {
 	return update("LottoDAO.update", lottoVO);
     }
+    /**
+     * 게시판 추가기능 정보를 수정한다.
+     *
+     * @param LottoVO
+     */
+    public void lottoLog(LottoVO lottoVO) throws Exception {
+    	insert("LottoDAO.lottoLog", lottoVO);
+    }
 }

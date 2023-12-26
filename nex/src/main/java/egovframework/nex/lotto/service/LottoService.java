@@ -12,4 +12,5 @@ public interface LottoService {
 
 	public int update(LottoVO lottoVO) throws Exception;
 
+	public void lottoLog(LottoVO lottoVO) throws Exception;
 }

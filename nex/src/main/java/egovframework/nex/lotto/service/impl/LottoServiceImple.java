@@ -24,4 +24,9 @@ public class LottoServiceImple implements LottoService {
 		return lottoDAO.update(lottoVO);
 	}
 
+	@Override
+	public void lottoLog(LottoVO lottoVO) throws Exception {
+		lottoDAO.lottoLog(lottoVO);
+	}
+
 }

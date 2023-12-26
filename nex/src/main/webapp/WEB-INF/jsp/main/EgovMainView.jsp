@@ -14,6 +14,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import ="egovframework.com.cmm.LoginVO" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,7 +46,6 @@
                 <div class="visual">
                     <p>
                         <span class="t1">넥스 홈페이지</span>
-                        <span class="t2">NEX 포털</span>
                         <span class="t3">하이오맨 퇴근시간<span id="hioman"></span></span>
                         <span class="t2">캡틴 합격 기원</span>
                     </p>

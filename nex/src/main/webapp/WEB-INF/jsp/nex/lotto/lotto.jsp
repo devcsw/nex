@@ -114,6 +114,7 @@
         </div>
     <script>
         function generateLottoNumbers() {
+        	getLogData('except7');
             var userNumbersInput = document.getElementById("userNumbers").value;
             var userNumbers = userNumbersInput.split(',').map(Number);
             if (userNumbers.length !== 7) {
@@ -145,6 +146,7 @@
         }
 
         function generateLottoNumbersOrigin() {
+        	getLogData('origin');
             var lottoNumbers = [];
             while (lottoNumbers.length < 5) {
                 var randomNum = Math.floor(Math.random() * 45) + 1;
@@ -176,12 +178,10 @@
 	        const drwNo = lottoData.value; // 원하는 로또 회차 번호를 지정
 	        const url = "/getLottoNumber/get.do?lottoNumber="+ drwNo;
 
-        	console.log("dd");
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 // 서버에서 받은 데이터를 처리
-                console.log(data); // 여기에서 데이터를 콘솔에 출력하거나 원하는 방식으로 처리
                 // 각 번호를 변수에 할당
                 const drwtNo1 = data.drwtNo1;
                 const drwtNo2 = data.drwtNo2;
@@ -228,6 +228,7 @@
         }
 
     function findMostFrequentNumbers1() {
+    	getLogData('100man1');
         for(var i=0;i<5;i++){
             var resultText  = numberFrequencies();
 
@@ -238,6 +239,7 @@
 
     }
     function findMostFrequentNumbers2() {
+    	getLogData('100man2');
             var top6Frequencies1  = numberFrequencies2();
             var top6Frequencies2 = numberFrequencies2();
             var top6Frequencies3 = numberFrequencies2();
@@ -347,6 +349,15 @@ function getRandomElementsFromArray(arr, count) {
     document.getElementById("lottoResults").appendChild(newP);
 }
 
+
+function getLogData(target) {
+    const url = "/lottoLog.do?target=" + target;
+    fetch(url)
+    .then(data => {
+    })
+    .catch(error => {
+    });
+}
     </script>
 	<c:import url="/sym/mms/EgovFooter.do" />
 

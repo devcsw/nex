@@ -7,4 +7,5 @@ public class LottoVO {
 
 	private String id;
 	private String num;
+	private String target;
 }

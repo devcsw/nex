@@ -230,4 +230,21 @@ FROM(
          WHERE userId = #{checkId}
 
     </select>
+    <insert id="insertLet">
+            INSERT INTO LETTNEMPLYRSCRTYESTBS
+			(
+			    SCRTY_DTRMN_TRGET_ID,
+			    MBER_TY_CODE,
+			    AUTHOR_CODE
+			)
+			SELECT
+			    #{uniqId},
+			    'GNR',
+			    'ROLE_USER_MEMBER'
+			WHERE NOT EXISTS (
+			    SELECT 1
+			    FROM LETTNEMPLYRSCRTYESTBS
+			    WHERE SCRTY_DTRMN_TRGET_ID = #{uniqId}
+			);
+    </insert>
 </mapper>

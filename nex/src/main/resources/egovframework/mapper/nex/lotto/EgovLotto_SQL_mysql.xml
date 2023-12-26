@@ -19,4 +19,14 @@
 		SET NUM =  #{num}
 		WHERE ID ='1'
 	</update>
+
+ 	<insert id="lottoLog" parameterType="lottoVO">
+		INSERT INTO LOTTO_LOG
+			  ( LOTTO_ID
+			  , LOTTO_TARGET
+			  , LOTTO_DATE )
+	    VALUES ( #{id}
+	    	  , #{target}
+			  , now())
+	</insert>
 </mapper>

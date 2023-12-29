@@ -30,6 +30,7 @@
 
 <title>NEX Corp</title>
 </head>
+<link rel="stylesheet" href="/css/style.css">
 <body>
 <noscript><p>자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</p></noscript>
 
@@ -47,10 +48,17 @@
                     <p>
                         <span class="t1">넥스 홈페이지</span>
                         <span class="t3">하이오맨 퇴근시간<span id="hioman"></span></span>
-                        <span class="t2">캡틴 합격 기원</span>
                     </p>
                 </div>
-
+				<div class="tab_contents">
+                	<div class="tab_item">
+						<div class="game">
+							<h1>∙ Tic Tac Toe ∙</h1>
+						    <div class="tictactoe"></div>
+						    <button id="play">Start !</button>
+						</div>
+                	</div>
+                </div>
                 <!-- 게시물 -->
                 <div class="dash_board">
                     <div class="inner">
@@ -60,8 +68,8 @@
                             <!-- <li><a href="">묻고 답하기</a></li> -->
                         </ul>
 
-                        <div class="tab_contents">
 
+                        <div class="tab_contents">
                         	<!-- 공지사항 -->
                             <div class="tab_item">
                                 <h2 class="blind">캡틴의 라스트 댄스</h2>
@@ -183,6 +191,8 @@
     // 페이지 로드 시 남은 시간 업데이트 시작
     updateRemainingTime();
 </script>
+
+	<script src="/js/tic.js"></script>
         <!-- footer 시작 -->
 	    <c:import url="/sym/mms/EgovFooter.do" />
 	    <!-- //footer 끝 -->

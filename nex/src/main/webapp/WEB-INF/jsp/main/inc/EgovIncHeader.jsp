@@ -72,7 +72,7 @@ $(document).ready(function(){
         </div>
 
         <!-- 전체검색 -->
-        <div id="TopSearch" class="total_search">
+        <!-- <div id="TopSearch" class="total_search">
             <div class="search_box">
                 <form method="post" action="#LINK" name="TopSearchForm" id="TopSearchForm">
                     <fieldset>
@@ -82,7 +82,7 @@ $(document).ready(function(){
                     </fieldset>
                 </form>
             </div>
-        </div>
+        </div> -->
         <!--// 전체검색 -->
 <%
     LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
